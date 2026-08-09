@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f4337">
+  <meta name="description" content="Crie posts, roteiros de Reels e mensagens para vender mais no seu negócio local.">
+  <link rel="manifest" href="manifest.json">
+  <title>Venda Local com IA</title>
+</head>
+<body>
+<div id="venda-local-app">
+  <style>
+    #venda-local-app{font-family:Inter,"Segoe UI",system-ui,sans-serif;color:light-dark(#14231f,#edf8f4);background:light-dark(#f3f7f5,#0d1513);border:1px solid light-dark(#dce8e3,#28413a);border-radius:24px;overflow:hidden;box-shadow:0 26px 70px light-dark(rgba(20,63,51,.14),rgba(0,0,0,.34))}
+    #venda-local-app *{box-sizing:border-box}
+    #venda-local-app .vl-shell{display:grid;grid-template-columns:216px 1fr;min-height:650px}
+    #venda-local-app .vl-side{position:relative;background:linear-gradient(155deg,#0f4337 0%,#092a24 62%,#081f1b 100%);color:#f3fffb;padding:26px 18px;display:flex;flex-direction:column;gap:30px;overflow:hidden}
+    #venda-local-app .vl-side:before{content:"";position:absolute;width:190px;height:190px;border-radius:50%;background:rgba(109,232,180,.14);filter:blur(4px);top:-90px;left:-70px}
+    #venda-local-app .vl-side>*{position:relative}
+    #venda-local-app .vl-brand{font-weight:500;font-size:18px;display:flex;gap:11px;align-items:center;letter-spacing:-.02em}
+    #venda-local-app .vl-logo{width:35px;height:35px;border-radius:11px;background:linear-gradient(145deg,#a2f0cd,#56c99b);color:#0c372c;display:grid;place-items:center;font-weight:500;box-shadow:0 8px 24px rgba(86,201,155,.22)}
+    #venda-local-app .vl-nav{display:grid;gap:8px}
+    #venda-local-app .vl-tab{appearance:none;border:1px solid transparent;background:transparent;color:#bddbd1;text-align:left;padding:11px 13px;border-radius:11px;cursor:pointer;font:inherit;transition:background .2s ease,color .2s ease,transform .2s ease}
+    #venda-local-app .vl-tab:hover{background:rgba(255,255,255,.06);color:#fff;transform:translateX(2px)}
+    #venda-local-app .vl-tab[aria-selected="true"]{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.10);color:#fff;box-shadow:inset 3px 0 #79dfb4}
+    #venda-local-app .vl-tip{margin-top:auto;font-size:12px;color:#b5d6ca;line-height:1.45}
+    #venda-local-app .vl-main{padding:34px;min-width:0;background-image:radial-gradient(circle at 100% 0%,light-dark(rgba(92,213,164,.12),rgba(92,213,164,.08)),transparent 38%)}
+    #venda-local-app .vl-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:24px}
+    #venda-local-app h1{font-size:27px;margin:0 0 7px;font-weight:500;letter-spacing:-.035em}
+    #venda-local-app h2{font-size:17px;margin:0 0 14px;font-weight:500}
+    #venda-local-app p{margin:0;color:light-dark(#5c716b,#abc0ba)}
+    #venda-local-app .vl-badge{background:light-dark(rgba(255,255,255,.72),rgba(29,58,49,.78));color:light-dark(#12633f,#a7efcc);border:1px solid light-dark(#d4e8df,#2c5648);padding:8px 12px;border-radius:999px;font-size:12px;white-space:nowrap;backdrop-filter:blur(10px)}
+    #venda-local-app .vl-card{background:light-dark(rgba(255,255,255,.86),rgba(23,36,33,.90));border:1px solid light-dark(rgba(210,228,220,.9),#2a403a);border-radius:17px;padding:20px;margin-bottom:16px;box-shadow:0 12px 36px light-dark(rgba(28,74,60,.07),rgba(0,0,0,.16));backdrop-filter:blur(14px)}
+    #venda-local-app .vl-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    #venda-local-app label{display:grid;gap:7px;font-size:13px;color:light-dark(#3e5750,#c2d5cf)}
+    #venda-local-app input,#venda-local-app select,#venda-local-app textarea{width:100%;border:1px solid light-dark(#cbdad4,#3b544d);background:light-dark(rgba(255,255,255,.94),#101a18);color:inherit;border-radius:11px;padding:12px 13px;font:inherit;transition:border-color .2s ease,box-shadow .2s ease}
+    #venda-local-app input:focus,#venda-local-app select:focus,#venda-local-app textarea:focus{border-color:#4fc394;box-shadow:0 0 0 3px rgba(79,195,148,.14);outline:none}
+    #venda-local-app textarea{min-height:92px;resize:vertical}
+    #venda-local-app .vl-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    #venda-local-app button.vl-primary,#venda-local-app button.vl-copy{border:0;border-radius:11px;padding:11px 16px;font:inherit;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease}
+    #venda-local-app button.vl-primary{background:linear-gradient(135deg,#176d50,#2da978);color:#fff;box-shadow:0 8px 22px rgba(23,109,80,.22)}
+    #venda-local-app button.vl-primary:hover,#venda-local-app button.vl-copy:hover{transform:translateY(-1px)}
+    #venda-local-app button.vl-copy{background:light-dark(#edf4f1,#243b35);color:inherit}
+    #venda-local-app .vl-output{white-space:pre-wrap;line-height:1.6;color:light-dark(#263e37,#e0ece8)}
+    #venda-local-app .vl-empty{padding:38px;text-align:center;border:1px dashed light-dark(#b8d0c6,#405b53);border-radius:15px;color:light-dark(#6b7e78,#9fb5ae);background:light-dark(rgba(255,255,255,.38),rgba(18,31,28,.4))}
+    #venda-local-app .vl-panel[hidden]{display:none}
+    #venda-local-app .vl-days{display:grid;gap:10px}
+    #venda-local-app .vl-day{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;padding:11px 0;border-bottom:1px solid light-dark(#e1ebe7,#29413a)}
+    #venda-local-app .vl-day:last-child{border-bottom:0}
+    #venda-local-app .vl-num{width:30px;height:30px;border-radius:10px;background:linear-gradient(145deg,#dff7eb,#c6efdd);display:grid;place-items:center;color:#176d50;font-weight:500;box-shadow:0 5px 14px rgba(23,109,80,.10)}
+    #venda-local-app .vl-small{font-size:12px;margin-top:4px}
+    @media(max-width:620px){#venda-local-app .vl-shell{grid-template-columns:1fr}#venda-local-app .vl-side{padding:14px}.vl-brand{justify-content:center}#venda-local-app .vl-nav{grid-template-columns:repeat(4,1fr)}#venda-local-app .vl-tab{text-align:center;padding:8px 4px;font-size:12px}#venda-local-app .vl-tip{display:none}#venda-local-app .vl-main{padding:18px}#venda-local-app .vl-grid{grid-template-columns:1fr}#venda-local-app .vl-head{display:block}#venda-local-app .vl-badge{display:inline-block;margin-top:10px}}
+  </style>
+  <div class="vl-shell">
+    <aside class="vl-side">
+      <div class="vl-brand"><span class="vl-logo">V</span> Venda Local</div>
+      <nav class="vl-nav" aria-label="Ferramentas">
+        <button class="vl-tab" aria-selected="true" data-panel="posts">Posts</button>
+        <button class="vl-tab" aria-selected="false" data-panel="reels">Reels</button>
+        <button class="vl-tab" aria-selected="false" data-panel="whatsapp">WhatsApp</button>
+        <button class="vl-tab" aria-selected="false" data-panel="plano">Plano 7 dias</button>
+      </nav>
+      <div class="vl-tip">Crie conteúdo personalizado, copie e publique no seu perfil profissional.</div>
+    </aside>
+    <main class="vl-main">
+      <div class="vl-head">
+        <div><h1 id="vl-title">Gerador de posts</h1><p id="vl-subtitle">Crie uma legenda pronta para atrair clientes da sua região.</p></div>
+        <div class="vl-actions" style="margin-top:0"><button class="vl-copy" id="vl-share">Compartilhar</button><button class="vl-primary" id="vl-install" hidden>Instalar app</button></div>
+      </div>
+
+      <section class="vl-panel" id="vl-posts">
+        <div class="vl-card">
+          <div class="vl-grid">
+            <label>Seu tipo de negócio<input id="vl-business" value="Manicure" placeholder="Ex.: manicure"></label>
+            <label>Objetivo do conteúdo<select id="vl-goal"><option>Conseguir agendamentos</option><option>Apresentar um serviço</option><option>Gerar confiança</option><option>Divulgar uma promoção</option></select></label>
+          </div>
+          <div class="vl-actions"><button class="vl-primary" data-generate="post">Gerar legenda</button></div>
+        </div>
+        <div id="vl-post-output" class="vl-empty">Preencha os campos e clique em “Gerar legenda”.</div>
+      </section>
+
+      <section class="vl-panel" id="vl-reels" hidden>
+        <div class="vl-card">
+          <div class="vl-grid">
+            <label>Seu tipo de negócio<input id="vl-reel-business" value="Barbearia" placeholder="Ex.: barbearia"></label>
+            <label>Estilo do vídeo<select id="vl-reel-style"><option>Dica rápida</option><option>Antes e depois</option><option>Bastidores</option><option>Quebra de objeção</option></select></label>
+          </div>
+          <div class="vl-actions"><button class="vl-primary" data-generate="reel">Gerar roteiro</button></div>
+        </div>
+        <div id="vl-reel-output" class="vl-empty">Escolha o estilo e gere um roteiro curto.</div>
+      </section>
+
+      <section class="vl-panel" id="vl-whatsapp" hidden>
+        <div class="vl-card">
+          <div class="vl-grid">
+            <label>Nome do serviço<input id="vl-service" value="Alongamento de unhas" placeholder="Ex.: limpeza de pele"></label>
+            <label>Situação<select id="vl-situation"><option>Primeiro atendimento</option><option>Enviar orçamento</option><option>Cliente não respondeu</option><option>Pós-venda</option></select></label>
+          </div>
+          <div class="vl-actions"><button class="vl-primary" data-generate="message">Gerar mensagem</button></div>
+        </div>
+        <div id="vl-message-output" class="vl-empty">Gere uma mensagem profissional e personalize antes de enviar.</div>
+      </section>
+
+      <section class="vl-panel" id="vl-plano" hidden>
+        <div class="vl-card">
+          <h2>Seu plano de execução</h2>
+          <div class="vl-days" id="vl-days"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script>
+    (()=>{
+      const root=document.getElementById('venda-local-app');
+      const titles={posts:['Gerador de posts','Crie uma legenda pronta para atrair clientes da sua região.'],reels:['Roteiros de Reels','Grave vídeos curtos sem perder tempo pensando no que dizer.'],whatsapp:['Mensagens para WhatsApp','Responda clientes com clareza e conduza o próximo passo.'],plano:['Plano de 7 dias','Siga uma ação simples por dia para colocar sua divulgação em movimento.']};
+      root.querySelectorAll('.vl-tab').forEach(btn=>btn.addEventListener('click',()=>{
+        root.querySelectorAll('.vl-tab').forEach(x=>x.setAttribute('aria-selected','false'));btn.setAttribute('aria-selected','true');
+        root.querySelectorAll('.vl-panel').forEach(x=>x.hidden=true);root.querySelector('#vl-'+btn.dataset.panel).hidden=false;
+        document.getElementById('vl-title').textContent=titles[btn.dataset.panel][0];document.getElementById('vl-subtitle').textContent=titles[btn.dataset.panel][1];
+      }));
+      const render=(id,text)=>{const box=document.getElementById(id);box.className='vl-card';box.innerHTML='<div class="vl-output"></div><div class="vl-actions"><button class="vl-copy">Copiar texto</button></div>';box.querySelector('.vl-output').textContent=text;box.querySelector('.vl-copy').onclick=async e=>{await navigator.clipboard.writeText(text);e.target.textContent='Copiado ✓';setTimeout(()=>e.target.textContent='Copiar texto',1400)}};
+      root.querySelector('[data-generate="post"]').onclick=()=>{const b=document.getElementById('vl-business').value.trim()||'negócio local';const g=document.getElementById('vl-goal').value;render('vl-post-output',`✨ Seu próximo momento de cuidado começa aqui!\n\nNa ${b}, cada atendimento é pensado para você se sentir bem e sair com um resultado feito com atenção aos detalhes.\n\nObjetivo de hoje: ${g.toLowerCase()}. Temos horários disponíveis nesta semana.\n\n📍 Atendimento na sua região\n📲 Envie “QUERO” pelo WhatsApp para consultar horários.\n\n#negociolocal #atendimentocomcarinho #agendamentos`)};
+      root.querySelector('[data-generate="reel"]').onclick=()=>{const b=document.getElementById('vl-reel-business').value.trim()||'negócio local';const s=document.getElementById('vl-reel-style').value;render('vl-reel-output',`ROTEIRO — ${s.toUpperCase()}\n\nCena 1 (0–3s): mostre o resultado e diga: “Se você procura ${b.toLowerCase()} na região, veja isso.”\n\nCena 2 (3–10s): mostre uma etapa do atendimento. Texto na tela: “Cuidado em cada detalhe”.\n\nCena 3 (10–16s): mostre o resultado final. Diga: “Esse atendimento foi feito pensando no estilo do cliente.”\n\nCena 4 (16–20s): olhe para a câmera. Diga: “Quer consultar os horários? Escreva QUERO no direct.”\n\nLegenda: Atendimento com atenção do começo ao fim. Fale comigo para saber os próximos horários.`)};
+      root.querySelector('[data-generate="message"]').onclick=()=>{const s=document.getElementById('vl-service').value.trim()||'serviço';const type=document.getElementById('vl-situation').value;const msgs={'Primeiro atendimento':`Olá! Que bom receber sua mensagem 😊 O atendimento de ${s} é personalizado. Para eu verificar a melhor opção, qual dia e período você prefere?`,'Enviar orçamento':`Olá! Conforme conversamos, o investimento para ${s} é de R$ [valor]. O atendimento inclui [detalhes]. Tenho disponibilidade em [dias/horários]. Qual opção funciona melhor para você?`,'Cliente não respondeu':`Olá! Passando para saber se você ainda gostaria de agendar ${s}. Posso verificar os horários disponíveis desta semana para você. Se não for o momento, tudo bem também 😊`,'Pós-venda':`Olá! Como você está? Queria saber como foi sua experiência com ${s}. Sua opinião é muito importante para continuarmos melhorando. Se puder, conte em uma frase o que achou 😊`};render('vl-message-output',msgs[type])};
+      const days=['Defina seu serviço principal e uma chamada para ação.','Ajuste sua bio: serviço, cidade e link do WhatsApp.','Publique um post mostrando o problema que você resolve.','Grave um Reel curto com bastidores ou antes e depois.','Envie uma mensagem de acompanhamento aos contatos recentes.','Publique uma prova real: processo, avaliação ou resultado autorizado.','Revise contatos, responda interessados e planeje a próxima semana.'];
+      document.getElementById('vl-days').innerHTML=days.map((d,i)=>`<div class="vl-day"><div class="vl-num">${i+1}</div><div><strong>Dia ${i+1}</strong><p class="vl-small">${d}</p></div></div>`).join('');
+      document.getElementById('vl-share').onclick=async()=>{const data={title:'Venda Local com IA',text:'Crie conteúdos e mensagens para divulgar seu negócio local.',url:location.href};if(navigator.share){await navigator.share(data)}else{await navigator.clipboard.writeText(location.href);alert('Link copiado!')}};
+      let installPrompt;const installButton=document.getElementById('vl-install');window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();installPrompt=event;installButton.hidden=false});installButton.onclick=async()=>{if(installPrompt){installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;installButton.hidden=true}};
+      if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js'))}
+    })();
+  </script>
+</div>
+</body>
+</html>

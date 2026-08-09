@@ -1,0 +1,11 @@
+{
+  "name": "Venda Local com IA",
+  "short_name": "Venda Local",
+  "description": "Ferramentas práticas para divulgação de negócios locais.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f7f5",
+  "theme_color": "#0f4337",
+  "icons": []
+}
